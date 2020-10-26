@@ -10,8 +10,9 @@ Ulrich Lukas 2017-03-10
 """
 import sys
 import pigpio as io
-from .waveshare.ADS1256.definitions import *
-from .waveshare.ADS1256.pigpio import ADS1256
+from waveshare.ADS1256.definitions import *
+from waveshare.ADS1256.pigpio import ADS1256
+from waveshare.ADS1256.default_config import DefaultConfig
 
 # Change this to the local DNS name of your Pi (often raspberrypi.local, if you have changed it) or
 # make it blank to connect to localhost.
@@ -63,12 +64,13 @@ SHORT_CIRCUIT = POS_AIN0|NEG_AIN0
 CH_SEQUENCE = (POTI, LDR, EXT2, EXT3, EXT4, EXT7, POTI_INVERTED, SHORT_CIRCUIT)
 ################################################################################
 
+card1 = DefaultConfig()
 
 def do_measurement():
     ### STEP 1: Initialise ADC object using default configuration:
     # (Note1: See default_config.py, see ADS1256 datasheet)
     # (Note2: Input buffer on means limited voltage range 0V...3V for 5V supply)
-    ads = ADS1256(pi=io.pi(PI_HOST))
+    ads = ADS1256(pi=io.pi(PI_HOST), conf=card1)
 
     ### STEP 2: Gain and offset self-calibration:
     ads.cal_self()
