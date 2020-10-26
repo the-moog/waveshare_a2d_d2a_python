@@ -9,7 +9,7 @@ import sys
 from time import sleep
 import pigpio as io
 
-from .waveshare.DAC8552.pigpio import DAC8552, DAC_A, DAC_B, MODE_POWER_DOWN_100K
+from waveshare.DAC8552.pigpio import DAC8552, DAC_A, DAC_B, MODE_POWER_DOWN_100K
 
 
 # Change this to the local DNS name of your Pi (often raspberrypi.local, if you have changed it) or
