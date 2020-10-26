@@ -1,13 +1,13 @@
 import sys
-from time import sleep
+
 import pigpio as io
-from DAC8552_PiGPIO import DAC8552, DAC_A, DAC_B, MODE_POWER_DOWN_100K
-from ADS1256_definitions import *
-from ADS1256_PiGPIO import ADS1256
+from .waveshare.DAC8552.pigpio import DAC8552, DAC_A, DAC_B, MODE_POWER_DOWN_100K
+from .waveshare.ADS1256.definitions import *
+from .waveshare.ADS1256.pigpio import ADS1256
 
 # Change this to the local DNS name of your Pi (often raspberrypi.local, if you have changed it) or
 # make it blank to connect to localhost.
-PI_HOST = 'klabs.local'
+PI_HOST = 'localhost'
 
 POTI = POS_AIN0|NEG_AINCOM
 # Light dependant resistor of the same board:
