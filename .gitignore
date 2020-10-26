@@ -1,3 +1,6 @@
 ._.DS_Store
 .idea
 venv
+/waveshare/ADS1256/__pycache__
+/waveshare/DAC8552/__pycache__
+/waveshare/__pycache__
