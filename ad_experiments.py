@@ -3,11 +3,11 @@
 import time
 import struct
 import pigpio as io
-from ADS1256_definitions import *
+from .waveshare.ADS1256.definitions import *
 
 # Change this to the local DNS name of your Pi (often raspberrypi.local, if you have changed it) or
 # make it blank to connect to localhost.
-PI_HOST = 'klabs.local'
+PI_HOST = 'localhost'
 
 SPI_CHANNEL = 1
 SPI_FLAGS = 0b0000000000000011100001

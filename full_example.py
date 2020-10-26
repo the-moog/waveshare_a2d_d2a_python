@@ -1,12 +1,10 @@
 import sys
-import os
-from time import sleep
 
 import pigpio as io
-from ADS1256_definitions import *
-from ADS1256_PiGPIO import ADS1256
-from waveshare_definitions import *
-from DAC8552_PiGPIO import DAC8552, DAC_A, DAC_B, MODE_POWER_DOWN_100K
+
+from .waveshare.ADS1256.pigpio import ADS1256
+from .waveshare.definitions import *
+from .waveshare.DAC8552.pigpio import DAC8552, DAC_A
 
 from blessings import Terminal
 

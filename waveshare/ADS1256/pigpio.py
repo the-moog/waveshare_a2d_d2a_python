@@ -37,15 +37,17 @@ PiGPIO port by Mitch Kahn, 4-2020 (Quarantine times...)
 import time
 import struct
 import pigpio as io
-from ADS1256_definitions import *
-import ADS1256_default_config_pigpio
+from .definitions import *
+from .default_config import DefaultConfig
+
 
 # Will try later to replace the wiringpi function
 def usleep(x):
     time.sleep(x / 1000000.0)
     #wp.delayMicroseconds(x)
 
-class ADS1256(object):
+
+class ADS1256:
     """Python class for interfacing the ADS1256 and ADS1255 analog to
     digital converters with the Raspberry Pi.
 
@@ -59,7 +61,7 @@ class ADS1256(object):
     Default pin and settings configuration is for the Open Hardware
     "Waveshare High-Precision AD/DA Board"
 
-    See file ADS1256_default_config.py for
+    See file default_config.py for
     configuration settings and description.
 
     Register read/write access is implemented via Python class/instance
@@ -67,7 +69,7 @@ class ADS1256(object):
 
     See help(ADS1256) for usage of the properties and functions herein.
 
-    See ADS1256_definitions.py for chip registers, flags and commands.
+    See definitions.py for chip registers, flags and commands.
 
     Documentation source: Texas Instruments ADS1255/ADS1256
     datasheet SBAS288: http://www.ti.com/lit/ds/sbas288j/sbas288j.pdf
@@ -92,7 +94,7 @@ class ADS1256(object):
         1, 2, 4, 8, 16, 32 and 64.
 
         This function sets the ADCON register with the code values
-        defined in file ADS1256_definitions.py.
+        defined in file definitions.py.
 
         Note: When changing the gain setting at runtime, with activated
         ACAL flag (AUTOCAL_ENABLE), this causes a Wait_DRDY() timeout
@@ -126,7 +128,7 @@ class ADS1256(object):
     def status(self):
         """Get/Set value of ADC status register, REG_STATUS (8 bit).
         For available settings flag options, see datasheet and file
-        ADS1256_definitions.py. Note: When enabling the AUTOCAL
+        definitions.py. Note: When enabling the AUTOCAL
         flag, any subsequent access to the BUFEN flag, DRATE register
         (drate property) or PGA gain setting (gain property) will cause
         an additional delay for completion of hardware auto-calibration.
@@ -204,7 +206,7 @@ class ADS1256(object):
         invalid data is sampled. In this case, call the sync() method
         to restart the acquisition cycle.
 
-        The available data rates are defined in ADS1256_definitions.py.
+        The available data rates are defined in definitions.py.
         """
         return self.read_reg(REG_DRATE)
 
@@ -297,7 +299,7 @@ class ADS1256(object):
     def chip_ID(self, value):
         raise AttributeError("This is a read-only attribute")
 
-    def __init__(self, conf=ADS1256_default_config_pigpio, pi=None):
+    def __init__(self, conf=DefaultConfig(), pi=None):
         """Constructor for the ADC object
         Hardware pin configuration must be set up at initialization phase and can not be changed later.
         Register/Configuration Flag settings are initialized, but these

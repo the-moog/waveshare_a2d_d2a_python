@@ -9,14 +9,13 @@ Hardware: Waveshare ADS1256 board interfaced to the Raspberry Pi 3
 Ulrich Lukas 2017-03-10
 """
 import sys
-import os
 import pigpio as io
-from ADS1256_definitions import *
-from ADS1256_PiGPIO import ADS1256
+from .waveshare.ADS1256.definitions import *
+from .waveshare.ADS1256.pigpio import ADS1256
 
 # Change this to the local DNS name of your Pi (often raspberrypi.local, if you have changed it) or
 # make it blank to connect to localhost.
-PI_HOST = 'klabs.local'
+PI_HOST = 'localhost'
 
 # if not os.path.exists("/dev/spidev0.1"):
 #     raise IOError("Error: No SPI device. Check settings in /boot/config.txt")
@@ -25,7 +24,7 @@ PI_HOST = 'klabs.local'
 ################################################################################
 ###  STEP 0: CONFIGURE CHANNELS AND USE DEFAULT OPTIONS FROM CONFIG FILE: ###
 #
-# For channel code values (bitmask) definitions, see ADS1256_definitions.py.
+# For channel code values (bitmask) definitions, see definitions.py.
 # The values representing the negative and positive input pins connected to
 # the ADS1256 hardware multiplexer must be bitwise OR-ed to form eight-bit
 # values, which will later be sent to the ADS1256 MUX register. The register
@@ -67,7 +66,7 @@ CH_SEQUENCE = (POTI, LDR, EXT2, EXT3, EXT4, EXT7, POTI_INVERTED, SHORT_CIRCUIT)
 
 def do_measurement():
     ### STEP 1: Initialise ADC object using default configuration:
-    # (Note1: See ADS1256_default_config.py, see ADS1256 datasheet)
+    # (Note1: See default_config.py, see ADS1256 datasheet)
     # (Note2: Input buffer on means limited voltage range 0V...3V for 5V supply)
     ads = ADS1256(pi=io.pi(PI_HOST))
 

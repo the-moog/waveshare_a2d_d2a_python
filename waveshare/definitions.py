@@ -1,8 +1,8 @@
-from ADS1256_definitions import *
+from .ADS1256.definitions import *
 
 # MAK: Moved these values here to declutter other files
 
-# For channel code values (bitmask) definitions, see ADS1256_definitions.py.
+# For channel code values (bitmask) definitions, see definitions.py.
 # The values representing the negative and positive input pins connected to
 # the ADS1256 hardware multiplexer must be bitwise OR-ed to form eight-bit
 # values, which will later be sent to the ADS1256 MUX register. The register

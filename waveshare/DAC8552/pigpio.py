@@ -18,7 +18,7 @@ from time import sleep
 
 import pigpio as io
 
-import DAC8552_default_config as DAC8552_default_config
+from .default_config import DefaultConfig
 
 # --- Definition of control byte bits constants --- #
 # Control byte : logic OR together to form the control command value.
@@ -49,14 +49,14 @@ DAC_B = BUFFER_B | UPDATE_DAC_B
 T_9_TIMEOUT = 100 / (10 ** 9)
 
 
-class DAC8552(object):
+class DAC8552:
     """Python class for interfacing the DAC8552 digital to analog converters with the Raspberry Pi.
 
     Download: https://github.com/adn05/dac8552
 
     Default pin and settings configuration is for the Open Hardware
     "Waveshare High-Precision AD/DA Board"
-    See file DAC8552_default_config.py for configuration settings and description.
+    See file default_config.py for configuration settings and description.
 
     Documentation source: Texas Instruments DAC8552
     datasheet SBAS288: http://www.ti.com/lit/ds/symlink/dac8552.pdf
@@ -86,7 +86,7 @@ class DAC8552(object):
     def digit_per_v(self, value):
         raise AttributeError("This is a read-only attribute")
 
-    def __init__(self, conf=DAC8552_default_config, pi=None):
+    def __init__(self, conf=DefaultConfig(), pi=None):
         """Constructor for the DAC object
 
         Hardware pin configuration must be set up at initialization phase and can not be changed later.
