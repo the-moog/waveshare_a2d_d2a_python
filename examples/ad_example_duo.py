@@ -7,6 +7,7 @@ ADS1256 cycling through eight input channels.
 Hardware: Waveshare ADS1256 board interfaced to the Raspberry Pi 3
 
 Ulrich Lukas 2017-03-10
+Dual card mods by Jason Morgan Oct-2020
 """
 import sys
 import pigpio as io
@@ -16,7 +17,7 @@ from waveshare.ADS1256.default_config import DefaultConfig
 
 # Change this to the local DNS name of your Pi (often raspberrypi.local, if you have changed it) or
 # make it blank to connect to localhost.
-PI_HOST = '192.168.0.21'
+PI_HOST = 'localhost'
 
 # if not os.path.exists("/dev/spidev0.1"):
 #     raise IOError("Error: No SPI device. Check settings in /boot/config.txt")

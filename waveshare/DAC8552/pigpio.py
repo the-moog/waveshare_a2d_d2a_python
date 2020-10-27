@@ -160,3 +160,8 @@ class DAC8552:
         # we send the control byte, the first 8 data bits (MSB) and the final 8 data bits.
         self.pi.spi_write(self.spi_id, [control, data >> 8, data & 0xFF])
         self._chip_release()
+
+    def close(self):
+        self.pi.spi_close(self.spi_id)
+ 
+

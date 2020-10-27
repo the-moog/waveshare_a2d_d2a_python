@@ -4,6 +4,7 @@ Grading LED luminosity
 Hardware: Waveshare High Precision AD/DA board interfaced to the Raspberry Pi 3
 Narcisse Assogba, 2018-07-17
 Mods by Mitch Kahn Quantinapril-2020
+Dual card mods by Jason Morgan Oct-2020
 """
 import sys
 from time import sleep
@@ -14,7 +15,7 @@ from waveshare.DAC8552.default_config import DefaultConfig
 
 # Change this to the local DNS name of your Pi (often raspberrypi.local, if you have changed it) or
 # make it blank to connect to localhost.
-PI_HOST = '192.168.0.21'
+PI_HOST = 'localhost'
 
 card1 = DefaultConfig()
 card2 = DefaultConfig()

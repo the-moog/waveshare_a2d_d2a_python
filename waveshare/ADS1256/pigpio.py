@@ -35,7 +35,6 @@ PiGPIO port by Mitch Kahn, 4-2020 (Quarantine times...)
 """
 
 import time
-import struct
 import pigpio as io
 from .definitions import *
 from .default_config import DefaultConfig
@@ -803,3 +802,6 @@ class ADS1256:
         for i in range(0, buf_len):
             ch_buffer[i] = self.read_and_next_is(ch_sequence[(i + 1) % buf_len])
         return ch_buffer
+
+    def close(self):
+        self.pi.spi_close(self.spi_id)
