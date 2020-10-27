@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 
 import time
-import struct
 import pigpio as io
-from .waveshare.ADS1256.definitions import *
+from waveshare.ADS1256.definitions import *
 
 # Change this to the local DNS name of your Pi (often raspberrypi.local, if you have changed it) or
 # make it blank to connect to localhost.

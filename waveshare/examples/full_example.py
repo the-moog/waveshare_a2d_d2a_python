@@ -2,9 +2,9 @@ import sys
 
 import pigpio as io
 
-from .waveshare.ADS1256.pigpio import ADS1256
-from .waveshare.definitions import *
-from .waveshare.DAC8552.pigpio import DAC8552, DAC_A
+from waveshare.ADS1256.pigpio import ADS1256
+from waveshare.definitions import *
+from waveshare.DAC8552.pigpio import DAC8552, DAC_A
 
 from blessings import Terminal
 

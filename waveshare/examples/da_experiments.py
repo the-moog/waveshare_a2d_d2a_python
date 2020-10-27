@@ -3,7 +3,6 @@
 # Digital to Analog Experiments
 
 import time
-import struct
 import pigpio as io
 
 # Change this to the local DNS name of your Pi (often raspberrypi.local, if you have changed it) or
