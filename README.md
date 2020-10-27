@@ -13,6 +13,19 @@ code is not used in this project, it is simply there for reference. Check their 
 I decided to use the PiGPIO library, primarily because of the remote control capability. PiGPIO runs as a daemon
 on the Pi and code using the daemon can run on a Mac/PC and connect over TCP. Works for me!
 
+## Refactor by the-moog
+
+The-Moog wanted to use two Waveshare cards on a single Pi (one of them modified to move the CS0, CS1 and DRDY lines).
+The existing code (all credit to Mitch Kahn) did not support this as the settings were in a single python file.
+The code structure was altered to make it into a Python module and allow different settings per instance.
+The opportunity was taken to meet some PEP8 conventions.
+See examples with the suffix _duo.
+A pypi project waveshare_a2d_d2a was created.
+
+## Installing Waveshare
+
+pip install waveshare_a2d_d2a
+
 ## Installing PiGPIO
 
 PiGPIO needs to be installed on every Raspberry Pi you intend to run this code on,
